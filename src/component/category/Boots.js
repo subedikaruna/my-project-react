@@ -1,11 +1,11 @@
 import React from "react";
 
-const Women = () => {
+const Boots = () => {
   return (
-    <div>
+    <div className="boot-grid">
       <div className="house">
         <div className="pixx">
-          <img src="./download (5).jpg" alt="Chicago" />
+          <img src="./download (1).jpg" alt="Chicago" />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Accusantium culpa unde dolore possimus iste fugiat vel! Tenetur,
@@ -14,7 +14,7 @@ const Women = () => {
           </p>
         </div>
         <div className="pixx">
-          <img src="./download (6).jpg" alt="Chicago" />
+          <img src="./download (2).jpg" alt="Chicago" />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Accusantium culpa unde dolore possimus iste fugiat vel! Tenetur,
@@ -23,7 +23,7 @@ const Women = () => {
           </p>
         </div>
         <div className="pixx">
-          <img src="./download (7).jpg" alt="Chicago" />
+          <img src="./download (3).jpg" alt="Chicago" />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             Accusantium culpa unde dolore possimus iste fugiat vel! Tenetur,
@@ -36,4 +36,4 @@ const Women = () => {
   );
 };
 
-export default Women;
+export default Boots;

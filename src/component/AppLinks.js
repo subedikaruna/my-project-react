@@ -1,17 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Nav from "./navbar/Nav.js";
-import Men from "./category/Men.js";
-
+import Nav from "../component/navbar/Nav.js";
 const AppLinks = () => {
   return (
     <div>
-      <NavLink to="/" style={{ marginRight: "20px" }}>
-        <Nav></Nav>
-      </NavLink>
-      <NavLink to="/Category" style={{ marginRight: "20px" }}>
-        <Men></Men>
-      </NavLink>
+      <div className=" flex justify-between items-center ">
+        <NavLink to="/" className="inline-block text-center">
+          <Nav></Nav>
+        </NavLink>
+        <NavLink to="/" className="inline-block text-center">
+          Home
+        </NavLink>
+        <NavLink to="/men" className="inline-block text-center">
+          Men
+        </NavLink>
+        <NavLink to="/women" className="inline-block text-center">
+          Women
+        </NavLink>
+      </div>
     </div>
   );
 };

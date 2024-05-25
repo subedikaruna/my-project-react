@@ -1,19 +1,23 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import CreateCategory from "../category/CreateCategory.js";
+
+import Home from "../home/Home.js";
+import Men from "../category/Men.js";
+import Women from "../category/Women.js";
+import Boots from "../category/Boots.js";
+import Slippers from "../category/Slippers.js";
 import Category from "../category/Category.js";
-import Nav from "../navbar/Nav.js";
 
 const MyRoutes = () => {
   return (
     <div>
       <Routes>
-        {/* <Route path="/" element={<Nav></Nav>}></Route> */}
-        <Route path="/Category" element={<Category></Category>}></Route>
-        <Route
-          path="/category/create"
-          element={<CreateCategory></CreateCategory>}
-        ></Route>
+        <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/men" element={<Men></Men>}></Route>
+        <Route path="/women" element={<Women></Women>}></Route>
+        <Route path="/category" element={<Category></Category>}></Route>
+        <Route path="/category/menboot" element={<Boots></Boots>}></Route>
+        <Route path="/category/menslipper" element={<Slippers></Slippers>}></Route>
       </Routes>
     </div>
   );

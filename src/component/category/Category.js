@@ -1,18 +1,22 @@
 import React from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Men from "./Men.js";
-import Women from "./Women.js";
-
+import { NavLink } from "react-router-dom";
+import Boots from "./Boots.js";
 const Category = () => {
   return (
-    <div>
-      <Men></Men>
-      <Women></Women>
-      {/* <button>
-        <FontAwesomeIcon icon={faBars} />
-      </button> */}
+    <div className="grid">
+      <div className=" flex flex-col  ">
+        <NavLink to="/category/menboot" className="inline-block ">
+          Men boot
+        </NavLink>
+        <NavLink to="category/menslipper" className="inline-block">
+          Men Slipper
+        </NavLink>
+      </div>
+      <div>
+      
+        <Boots></Boots>
+      </div>
     </div>
   );
 };
