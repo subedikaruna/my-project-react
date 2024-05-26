@@ -10,20 +10,19 @@ const CreateCategory = () => {
   let [categoryImage, setCategoryImage] = useState("");
   let [categoryUrl, setCategoryUrl] = useState("");
 
-
   return (
-    <div>
-  
+    <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
       <form
+        className="p-7"
         onSubmit={async (e) => {
           e.preventDefault();
           //e.preventDefault is done to prevent default property(refresh)
           let data = {
             categoryName: categoryName,
-            categoryParent:categoryParent,
+            categoryParent: categoryParent,
             categoryStatus: categoryStatus,
             categoryImage: categoryImage,
-            categoryUrl:categoryUrl
+            categoryUrl: categoryUrl,
           };
           //hit api using axios
           try {
@@ -32,13 +31,12 @@ const CreateCategory = () => {
               method: "post",
               data: data,
             });
-            
+
             setCategoryName("");
             setCategoryParent("");
             setCategoryStatus("");
             setCategoryImage("");
             setCategoryUrl("");
-         
 
             toast.success(result.data.message);
           } catch (error) {
@@ -52,9 +50,10 @@ const CreateCategory = () => {
           // console.log(data)
         }}
       >
-        <div>
+        <div className="mb-10">
           <label htmlFor="categoryName"> Category Name</label>
           <input
+            className="border-solid border-2 border-black ml-8"
             id="categoryName"
             type="text"
             value={categoryName}
@@ -63,9 +62,10 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-        <div>
+        <div className="mb-10">
           <label htmlFor="categoryParent">category Parent</label>
           <input
+            className="border-solid border-2 border-black ml-8"
             type="text"
             id="categoryParent"
             value={categoryParent}
@@ -74,9 +74,10 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-        <div>
+        <div className="mb-10">
           <label htmlFor="categoryStatus">category Status</label>
           <input
+            className="border-solid border-2 border-black ml-8"
             type="text"
             id="categoryStatus"
             value={categoryStatus}
@@ -85,10 +86,11 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-        
-        <div>
+
+        <div className="mb-10">
           <label htmlFor="categoryImage">category Image</label>
           <input
+            className="border-solid border-2 border-black ml-8"
             type="text"
             id="categoryImage"
             value={categoryImage}
@@ -97,9 +99,10 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-        <div>
+        <div className="mb-10">
           <label htmlFor="categoryUrl">category Url</label>
           <input
+            className="border-solid border-2 border-black ml-8"
             type="text"
             id="categoryUrl"
             value={categoryUrl}
@@ -108,10 +111,13 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-       
-      
 
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          className="border-solid border-2 border-black p-2"
+        >
+          Submit
+        </button>
       </form>
       <ToastContainer />
     </div>

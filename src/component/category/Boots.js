@@ -1,8 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Boots = () => {
   return (
-    <div className="boot-grid">
+    <div>
+      <div className=" flex flex-col  ">
+        <NavLink to="/menboot" className="inline-block "></NavLink>
+        <NavLink to="/menslipper" className="inline-block"></NavLink>
+      </div>
       <div className="house">
         <div className="pixx">
           <img src="./download (1).jpg" alt="Chicago" />

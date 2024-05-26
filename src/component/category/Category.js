@@ -1,21 +1,21 @@
 import React from "react";
 
 import { NavLink } from "react-router-dom";
-import Boots from "./Boots.js";
+
+import Combo from "./Combo.js";
 const Category = () => {
   return (
     <div className="grid">
       <div className=" flex flex-col  ">
-        <NavLink to="/category/menboot" className="inline-block ">
+        <NavLink to="/menboot" className="inline-block ">
           Men boot
         </NavLink>
-        <NavLink to="category/menslipper" className="inline-block">
+        <NavLink to="/menslipper" className="inline-block">
           Men Slipper
         </NavLink>
       </div>
       <div>
-      
-        <Boots></Boots>
+       <Combo></Combo>
       </div>
     </div>
   );

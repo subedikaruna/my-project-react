@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { NavLink } from "react-router-dom";
+// import CreateCategory from "./CreateCategory.js";
 
 const Men = () => {
   return (
     <div>
-      <NavLink to="/category" className="inline-block text-center">
+      <NavLink to="/categoryshoe" className="inline-block text-center">
         <FontAwesomeIcon icon={faBars} />
       </NavLink>
 
@@ -41,6 +42,12 @@ const Men = () => {
           </p>
         </div>
       </div>
+      <NavLink to="/category/create" className="inline-block text-center mr-5">
+        Create
+      </NavLink>
+      <NavLink to="/category" className="inline-block text-center">
+        Read All
+      </NavLink>
     </div>
   );
 };

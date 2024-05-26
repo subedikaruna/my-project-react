@@ -1,6 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Nav from "../component/navbar/Nav.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 const AppLinks = () => {
   return (
     <div>
@@ -16,6 +20,12 @@ const AppLinks = () => {
         </NavLink>
         <NavLink to="/women" className="inline-block text-center">
           Women
+        </NavLink>
+        <NavLink to="/fb" className="inline-block text-center">
+          <FontAwesomeIcon icon={faFacebook} />
+        </NavLink>
+        <NavLink to="/google" className="inline-block text-center">
+          <FontAwesomeIcon icon={faGoogle} />
         </NavLink>
       </div>
     </div>
