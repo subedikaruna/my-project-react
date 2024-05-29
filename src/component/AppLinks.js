@@ -12,6 +12,9 @@ const AppLinks = () => {
         <NavLink to="/" className="inline-block text-center">
           <Nav></Nav>
         </NavLink>
+        <NavLink to="/dashboard" className="inline-block text-center">
+          Dashboard
+        </NavLink>
         <NavLink to="/" className="inline-block text-center">
           Home
         </NavLink>

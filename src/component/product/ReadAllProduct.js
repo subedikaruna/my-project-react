@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ReadAllCategory = () => {
-  let [categorys, setCategorys] = useState([]);
+const ReadAllSubcategory = () => {
+  let [subcategorys, setSubcategorys] = useState([]);
   let navigate = useNavigate();
   /*
     hit api on page load
@@ -16,10 +16,10 @@ const ReadAllCategory = () => {
   let getData = async () => {
     try {
       let result = await axios({
-        url: "http://localhost:8001/categorys",
+        url: "http://localhost:8001/subcategorys",
         method: "get",
       });
-      setCategorys(result.data.result);
+      setSubcategorys(result.data.result);
     } catch (error) {}
   };
   useEffect(() => {
@@ -27,7 +27,7 @@ const ReadAllCategory = () => {
   }, []);
   const handleDelete = async (id) => {
     let result = await axios({
-      url: `http://localhost:8001/categorys/${id}`,
+      url: `http://localhost:8001/subcategorys/${id}`,
       method: "delete",
     });
     getData();
@@ -37,25 +37,25 @@ const ReadAllCategory = () => {
   return (
     <div>
       <ToastContainer></ToastContainer>
-      {categorys.map((item, i) => {
+      {subcategorys.map((item, i) => {
         return (
           <div key={i} style={{ border: "solid red 3px", margin: "10px" }}>
-            <p>name is {item.categoryName}</p>
-            <p>parent is {item.categoryParent}</p>
-            <p>Status is {item.categoryStatus}</p>
-            <p>Image is {item.categoryImage}</p>
-            <p>Url is {item.categoryUrl}</p>
+            <p>name is {item.subcategoryName}</p>
+
+            <p>Status is {item.subcategoryStatus}</p>
+            <p>Image is {item.subcategoryImage}</p>
+            <p>Url is {item.subcategoryUrl}</p>
 
             <button
               onClick={() => {
-                navigate(`/category/${item._id}`);
+                navigate(`/subcategory/${item._id}`);
               }}
             >
               View
             </button>
             <button
               onClick={() => {
-                navigate(`/category/update/${item._id}`);
+                navigate(`/subcategory/update/${item._id}`);
               }}
             >
               Edit
@@ -74,4 +74,4 @@ const ReadAllCategory = () => {
   );
 };
 
-export default ReadAllCategory;
+export default ReadAllSubcategory;
