@@ -19,6 +19,9 @@ import Dashboard from "../dashboard/Dashboard.js";
 import CreateSubcategory from "../subcat/CreateSubcategory.js";
 import ReadAllSubcategory from "../subcat/ReadAllSubcategory.js";
 import CreateProduct from "../product/CreateProduct.js";
+import ReadAllProduct from "../product/ReadAllProduct.js";
+import ReadSpecificProduct from "../product/ReadSpecificProduct.js";
+import UpdateProduct from "../product/UpdateProduct.js";
 
 const MyRoutes = () => {
   return (
@@ -71,18 +74,18 @@ const MyRoutes = () => {
           path="/product/create"
           element={<CreateProduct></CreateProduct>}
         ></Route>
-        {/* <Route
-          path="/subcategory"
+        <Route
+          path="/product"
           element={<ReadAllProduct></ReadAllProduct>}
         ></Route>
         <Route
-          path="/subcategory/:id"
+          path="/product/:id"
           element={<ReadSpecificProduct></ReadSpecificProduct>}
         ></Route>
         <Route
-          path="/subcategory/update/:id"
+          path="/product/update/:id"
           element={<UpdateProduct></UpdateProduct>}
-        ></Route> */}
+        ></Route>
       </Routes>
     </div>
   );

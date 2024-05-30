@@ -1,7 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 
 const CreateProduct = () => {
   let [productName, setProductName] = useState("");
@@ -13,7 +15,69 @@ const CreateProduct = () => {
   let [productStatus, setProductStatus] = useState("");
   let [displayPrice, setDisplayprice] = useState("");
   let [actualPrice, setActualprice] = useState("");
-  let [shortDescription, setShortDescription] = useState("");
+  let [shortDescription, setShortdescription] = useState("");
+
+  let [categorys, setCategorys] = useState([]);
+  let [subcategorys, setSubcategorys] = useState([]);
+  let getCategorys = async () => {
+    try {
+      let result = await axios({
+        url: `http://localhost:8001/categorys`,
+        method: "get",
+      });
+      setCategorys(result.data.result);
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getCategorys();
+  }, []);
+  // console.log(products);
+  let myCategorys = categorys.map((item, i) => {
+    return {
+      label: item.categoryName,
+      value: item._id,
+    };
+  });
+  // console.log(myProducts);
+  let getSubcategorys = async () => {
+    try {
+      let result = await axios({
+        url: `http://localhost:8001/subcategorys`,
+        method: "get",
+      });
+      setSubcategorys(result.data.result);
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getSubcategorys();
+  }, []);
+  let mySubcategorys = subcategorys.map((item, i) => {
+    return {
+      label: item.subcategoryName,
+      value: item._id,
+    };
+  });
+
+  const onDrop = useCallback(async (acceptedFiles) => {
+    // Do something with the files
+    let fileData = acceptedFiles[0];
+    //set links
+
+    let formData = new FormData();
+    formData.append("document", acceptedFiles[0]);
+
+    try {
+      let result = await axios({
+        url: "http://localhost:8000/files/single",
+        method: "post",
+        data: formData,
+      });
+      setFeatureImage(result.data.result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
     <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
@@ -49,7 +113,7 @@ const CreateProduct = () => {
             setProductStatus("");
             setDisplayprice("");
             setActualprice("");
-            setShortDescription("");
+            setShortdescription("");
 
             toast.success(result.data.message);
           } catch (error) {
@@ -75,31 +139,56 @@ const CreateProduct = () => {
             }}
           ></input>
         </div>
-        <div className="mb-10">
-          <label htmlFor="productImage">product Image</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="productImage"
-            value={productImage}
+        <div>
+          <label htmlFor="categoryId">Category Id</label>
+
+          <select
+            id="categoryId"
+            type="number"
+            value={categoryId}
             onChange={(e) => {
-              setProductImage(e.target.value);
+              setCategoryId(e.target.value);
             }}
-          ></input>
+          >
+            {myCategorys.map((item, i) => {
+              return (
+                <option key={i} value={item.value}>
+                  {item.label}
+                </option>
+              );
+            })}
+          </select>
         </div>
-        <div className="mb-10">
-          <label htmlFor="productUrl">product Url</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="productUrl"
-            value={productUrl}
+        <div>
+          <label htmlFor="subcategoryId">Subcategory Id</label>
+
+          <select
+            id="subcategoryId"
+            type="number"
+            value={subcategoryId}
             onChange={(e) => {
-              setProductUrl(e.target.value);
+              setSubcategoryId(e.target.value);
             }}
-          ></input>
+          >
+            {mySubcategorys.map((item, i) => {
+              return (
+                <option key={i} value={item.value}>
+                  {item.label}
+                </option>
+              );
+            })}
+          </select>
         </div>
 
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {isDragActive ? (
+            <p>Drop the files here ...</p>
+          ) : (
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          )}
+          {featureImage ? <img alt="profile" src={featureImage}></img> : null}
+        </div>
         <div className="mb-10">
           <label htmlFor="productStatus">product Status</label>
           <input
@@ -114,28 +203,39 @@ const CreateProduct = () => {
         </div>
 
         <div className="mb-10">
-          <label htmlFor="productImage">product Image</label>
+          <label htmlFor="displayPrice">display Price</label>
           <input
             className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="productImage"
-            value={productImage}
+            type="number"
+            id="displayPrice"
+            value={displayPrice}
             onChange={(e) => {
-              setProductImage(e.target.value);
+              setDisplayprice(e.target.value);
             }}
           ></input>
         </div>
         <div className="mb-10">
-          <label htmlFor="productUrl">product Url</label>
+          <label htmlFor="actualPrice">actual Price</label>
           <input
             className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="productUrl"
-            value={productUrl}
+            type="number"
+            id="actualPrice"
+            value={actualPrice}
             onChange={(e) => {
-              setProductUrl(e.target.value);
+              setActualprice(e.target.value);
             }}
           ></input>
+        </div>
+        <div className="mb-10">
+          <label htmlFor="shortDescription">short Description</label>
+          <textarea
+            className="border-solid border-2 border-black ml-8"
+            id="shortDescription"
+            value={shortDescription}
+            onChange={(e) => {
+              setShortdescription(e.target.value);
+            }}
+          ></textarea>
         </div>
 
         <button
