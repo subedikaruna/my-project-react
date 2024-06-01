@@ -22,6 +22,14 @@ import CreateProduct from "../product/CreateProduct.js";
 import ReadAllProduct from "../product/ReadAllProduct.js";
 import ReadSpecificProduct from "../product/ReadSpecificProduct.js";
 import UpdateProduct from "../product/UpdateProduct.js";
+import CreateImage from "../image/CreateImage.js";
+import ReadAllImage from "../image/ReadAllImage.js";
+import ReadSpecificImage from "../image/ReadSpecificImage.js";
+import UpdateImage from "../image/UpdateImage.js";
+import CreateProductdetail from "../productdetail/CreateProductdetail.js";
+import ReadAllProductdetail from "../productdetail/ReadAllProductdetail.js";
+import ReadSpecificProductdetail from "../productdetail/ReadSpecificProductdetail.js";
+import UpdateProductdetail from "../productdetail/UpdateProductdetail.js";
 
 const MyRoutes = () => {
   return (
@@ -33,7 +41,7 @@ const MyRoutes = () => {
         <Route path="/women" element={<Women></Women>}></Route>
         <Route path="/fb" element={<Fb></Fb>}></Route>
         <Route path="/google" element={<Google></Google>}></Route>
-        <Route path="/categoryshoe" element={<Category></Category>}></Route>
+        <Route path="/category" element={<Category></Category>}></Route>
 
         <Route path="/menboot" element={<Boots></Boots>}></Route>
         <Route path="/menslipper" element={<Slippers></Slippers>}></Route>
@@ -85,6 +93,35 @@ const MyRoutes = () => {
         <Route
           path="/product/update/:id"
           element={<UpdateProduct></UpdateProduct>}
+        ></Route>
+        <Route
+          path="/image/create"
+          element={<CreateImage></CreateImage>}
+        ></Route>
+        <Route path="/image" element={<ReadAllImage></ReadAllImage>}></Route>
+        <Route
+          path="/image/:id"
+          element={<ReadSpecificImage></ReadSpecificImage>}
+        ></Route>
+        <Route
+          path="/image/update/:id"
+          element={<UpdateImage></UpdateImage>}
+        ></Route>
+        <Route
+          path="/productdetail/create"
+          element={<CreateProductdetail></CreateProductdetail>}
+        ></Route>
+        <Route
+          path="/productdetail"
+          element={<ReadAllProductdetail></ReadAllProductdetail>}
+        ></Route>
+        <Route
+          path="/productdetail/:id"
+          element={<ReadSpecificProductdetail></ReadSpecificProductdetail>}
+        ></Route>
+        <Route
+          path="/productdetail/update/:id"
+          element={<UpdateProductdetail></UpdateProductdetail>}
         ></Route>
       </Routes>
     </div>

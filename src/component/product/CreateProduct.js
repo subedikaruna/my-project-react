@@ -187,7 +187,7 @@ const CreateProduct = () => {
           ) : (
             <p>Drag 'n' drop some files here, or click to select files</p>
           )}
-          {featureImage ? <img alt="profile" src={featureImage}></img> : null}
+          {featureImage ? <img alt="feature" src={featureImage}></img> : null}
         </div>
         <div className="mb-10">
           <label htmlFor="productStatus">product Status</label>

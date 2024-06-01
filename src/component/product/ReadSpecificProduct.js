@@ -31,13 +31,13 @@ const ReadSpecificProduct = () => {
 
       <p>Status is {product.productStatus}</p>
       <p>FeatureImage is {product.featureImage}</p>
-      {product.featureImage && (
+      
         <img
           src={product.featureImage}
           alt={product.productName}
           style={{ width: "100px", height: "100px" }}
         />
-      )}
+  
       <p>display Price is {product.displayPrice}</p>
       <p>actual Price is {product.actualPrice}</p>
       <p>short Description is {product.shortDescription}</p>

@@ -21,11 +21,45 @@ const UpdateProduct = () => {
   let [actualPrice, setActualprice] = useState("");
   let [shortDescription, setShortdescription] = useState("");
   
-  let [myCategorys, setMyCategorys] = useState([]);
-  let [getCategorys, setGetCategorys] = useState([]);
-  let [getSubcategorys, setGetSubcategorys] = useState([]);
-  let [mySubcategorys, setMySubcategorys] = useState([]);
-
+  let [categorys, setCategorys] = useState([]);
+  let [subcategorys, setSubcategorys] = useState([]);
+  let getCategorys = async () => {
+    try {
+      let result = await axios({
+        url: `http://localhost:8001/categorys`,
+        method: "get",
+      });
+      setCategorys(result.data.result);
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getCategorys();
+  }, []);
+  // console.log(products);
+  let myCategorys = categorys.map((item, i) => {
+    return {
+      label: item.categoryName,
+      value: item._id,
+    };
+  });
+  let getSubcategorys = async () => {
+    try {
+      let result = await axios({
+        url: `http://localhost:8001/subcategorys`,
+        method: "get",
+      });
+      setSubcategorys(result.data.result);
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getSubcategorys();
+  }, []);
+  let mySubcategorys = subcategorys.map((item, i) => {
+    return {
+      label: item.subcategoryName,
+      value: item._id,
+    };
+  });
   const getData = async () => {
     try {
       let result = await axios({

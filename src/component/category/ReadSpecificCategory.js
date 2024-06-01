@@ -24,6 +24,11 @@ const ReadSpecificCategory = () => {
       <p>parent is {category.categoryParent}</p>
       <p>Status is {category.categoryStatus}</p>
       <p>Image is {category.categoryImage}</p>
+      <img
+        src={category.categoryImage}
+        alt={category.categoryName}
+        style={{ width: "200px", height: "100px" }}
+      />
       <p>Url is {category.categoryUrl}</p>
     </div>
   );

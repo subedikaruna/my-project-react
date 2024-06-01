@@ -42,9 +42,7 @@ const Men = () => {
           </p>
         </div>
       </div>
-      <NavLink to="/category/create" className="inline-block text-center mr-5">
-        Create
-      </NavLink>
+     
       <NavLink to="/category" className="inline-block text-center">
         Read All
       </NavLink>

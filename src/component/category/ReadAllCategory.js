@@ -44,6 +44,13 @@ const ReadAllCategory = () => {
             <p>parent is {item.categoryParent}</p>
             <p>Status is {item.categoryStatus}</p>
             <p>Image is {item.categoryImage}</p>
+            {item.categoryImage && (
+              <img
+                src={item.categoryImage}
+                alt={item.categoryName}
+                style={{ width: "200px", height: "100px" }}
+              />
+            )}
             <p>Url is {item.categoryUrl}</p>
 
             <button

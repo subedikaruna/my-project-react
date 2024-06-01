@@ -2,7 +2,7 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
-import Combo from "./Combo.js";
+import ReadAllCategory from "./ReadAllCategory.js";
 const Category = () => {
   return (
     <div className="grid">
@@ -15,7 +15,7 @@ const Category = () => {
         </NavLink>
       </div>
       <div>
-       <Combo></Combo>
+        <ReadAllCategory></ReadAllCategory>
       </div>
     </div>
   );
