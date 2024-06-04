@@ -32,9 +32,9 @@ const CreateProductdetail = () => {
   });
 
   return (
-    <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
+    <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100 ">
       <form
-        className="p-7"
+        className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
         onSubmit={async (e) => {
           e.preventDefault();
           //e.preventDefault is done to prevent default property(refresh)
@@ -66,11 +66,15 @@ const CreateProductdetail = () => {
           // console.log(data)
         }}
       >
-        <div className="mb-10">
-          <label htmlFor="productId">Product Id</label>
+      <h2 className="text-2xl font-bold mb-6 text-gray-700">
+          Product Detail
+          </h2>
+        <div className="mb-6">
+          <label htmlFor="productId" className="block text-gray-600 mb-2">Product Id</label>
 
           <select
             id="productId"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="number"
             value={productId}
             onChange={(e) => {
@@ -86,10 +90,10 @@ const CreateProductdetail = () => {
             })}
           </select>
         </div>
-        <div className="mb-10">
-          <label htmlFor="productFeature"> product Feature</label>
+        <div className="mb-6">
+          <label htmlFor="productFeature" className="block text-gray-600 mb-2"> product Feature</label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             id="productFeature"
             type="text"
             value={productFeature}
@@ -99,10 +103,10 @@ const CreateProductdetail = () => {
           ></input>
         </div>
 
-        <div className="mb-10">
-          <label htmlFor="productDescription">product Description</label>
+        <div className="mb-6">
+          <label htmlFor="productDescription" block text-gray-600 mb-2>product Description</label>
           <textarea
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="text"
             id="productDescription"
             value={productDescription}

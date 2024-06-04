@@ -20,7 +20,7 @@ const UpdateProduct = () => {
   let [displayPrice, setDisplayprice] = useState("");
   let [actualPrice, setActualprice] = useState("");
   let [shortDescription, setShortdescription] = useState("");
-  
+
   let [categorys, setCategorys] = useState([]);
   let [subcategorys, setSubcategorys] = useState([]);
   let getCategorys = async () => {
@@ -130,7 +130,7 @@ const UpdateProduct = () => {
 
     try {
       let result = await axios({
-        url: "http://localhost:8000/files/single",
+        url: "http://localhost:8001/files/single",
         method: "post",
         data: formData,
       });

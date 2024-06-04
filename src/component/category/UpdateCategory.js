@@ -12,10 +12,11 @@ const UpdateCategory = () => {
   let [categoryStatus, setCategoryStatus] = useState("");
   let [categoryImage, setCategoryImage] = useState("");
   let [categoryUrl, setCategoryUrl] = useState("");
+
   const getData = async () => {
     try {
       let result = await axios({
-        url: `http://localhost:8001/categorys/${id}`,
+        url: `${process.env.URL}/categorys/${id}`,
         method: "get",
       });
       let data = result.data.result;

@@ -1,20 +1,18 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+
 const CreateCategory = () => {
   let [categoryName, setCategoryName] = useState("");
   let [categoryParent, setCategoryParent] = useState("");
   let [categoryStatus, setCategoryStatus] = useState("");
   let [categoryImage, setCategoryImage] = useState("");
   let [categoryUrl, setCategoryUrl] = useState("");
-  const onDrop = useCallback(async (acceptedFiles) => {
-    // Do something with the files
-    let fileData = acceptedFiles[0];
-    //set links
 
+  const onDrop = useCallback(async (acceptedFiles) => {
+    let fileData = acceptedFiles[0];
     let formData = new FormData();
     formData.append("document", acceptedFiles[0]);
     try {
@@ -31,12 +29,11 @@ const CreateCategory = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
+    <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100">
       <form
-        className="p-7"
+        className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
         onSubmit={async (e) => {
           e.preventDefault();
-          //e.preventDefault is done to prevent default property(refresh)
           let data = {
             categoryName: categoryName,
             categoryParent: categoryParent,
@@ -44,7 +41,7 @@ const CreateCategory = () => {
             categoryImage: categoryImage,
             categoryUrl: categoryUrl,
           };
-          //hit api using axios
+
           try {
             let result = await axios({
               url: "http://localhost:8001/categorys",
@@ -66,14 +63,17 @@ const CreateCategory = () => {
               toast.error(error.message);
             }
           }
-
-          // console.log(data)
         }}
       >
-        <div className="mb-10">
-          <label htmlFor="categoryName"> Category Name</label>
+        <h2 className="text-2xl font-bold mb-6 text-gray-700">
+          Create Category
+        </h2>
+        <div className="mb-6">
+          <label htmlFor="categoryName" className="block text-gray-600 mb-2">
+            Category Name
+          </label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             id="categoryName"
             type="text"
             value={categoryName}
@@ -82,10 +82,12 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-        <div className="mb-10">
-          <label htmlFor="categoryParent">category Parent</label>
+        <div className="mb-6">
+          <label htmlFor="categoryParent" className="block text-gray-600 mb-2">
+            Category Parent
+          </label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="text"
             id="categoryParent"
             value={categoryParent}
@@ -94,10 +96,12 @@ const CreateCategory = () => {
             }}
           ></input>
         </div>
-        <div className="mb-10">
-          <label htmlFor="categoryStatus">category Status</label>
+        <div className="mb-6">
+          <label htmlFor="categoryStatus" className="block text-gray-600 mb-2">
+            Category Status
+          </label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="text"
             id="categoryStatus"
             value={categoryStatus}
@@ -107,19 +111,29 @@ const CreateCategory = () => {
           ></input>
         </div>
 
-        <div {...getRootProps()}>
-          <input {...getInputProps()} />
-          {isDragActive ? (
-            <p>Drop the files here ...</p>
-          ) : (
-            <p>Drag 'n' drop some files here, or click to select files</p>
-          )}
-          {categoryImage ? <img alt="profile" src={categoryImage}></img> : null}
+        <div className="mb-6">
+          <label className="block text-gray-600 mb-2">Category Image</label>
+          <div
+            {...getRootProps()}
+            className="border-dashed border-2 border-gray-300 p-4 text-center cursor-pointer rounded-md"
+          >
+            <input {...getInputProps()} />
+            {isDragActive ? (
+              <p>Drop the files here ...</p>
+            ) : (
+              <p>Drag 'n' drop some files here, or click to select files</p>
+            )}
+            {categoryImage && (
+              <img alt="category" src={categoryImage} className="mt-4 w-full" />
+            )}
+          </div>
         </div>
-        <div className="mb-10">
-          <label htmlFor="categoryUrl">category Url</label>
+        <div className="mb-6">
+          <label htmlFor="categoryUrl" className="block text-gray-600 mb-2">
+            Category URL
+          </label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="text"
             id="categoryUrl"
             value={categoryUrl}
@@ -131,7 +145,7 @@ const CreateCategory = () => {
 
         <button
           type="submit"
-          className="border-solid border-2 border-black p-2"
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Submit
         </button>

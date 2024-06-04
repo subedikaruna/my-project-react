@@ -1,76 +1,67 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const ReadAllProductdetail = () => {
-  let [productdetails, setProductdetails] = useState([]);
-  let navigate = useNavigate();
-  /*
-    hit api on page load
-    api gives data
-    set data to state variable
-    display data
-    */
-  let getData = async () => {
+  const [productdetails, setProductdetails] = useState([]);
+  const navigate = useNavigate();
+
+  const getData = async () => {
     try {
-      let result = await axios({
-        url: "http://localhost:8001/productdetails",
-        method: "get",
-      });
+      let result = await axios.get("http://localhost:8001/productdetails");
       setProductdetails(result.data.result);
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   useEffect(() => {
     getData();
   }, []);
+
   const handleDelete = async (id) => {
-    let result = await axios({
-      url: `http://localhost:8001/productdetails/${id}`,
-      method: "delete",
-    });
-    getData();
-    console.log(result);
-    toast.success(result.data.message);
+    try {
+      let result = await axios.delete(
+        `http://localhost:8001/productdetails/${id}`
+      );
+      getData();
+      toast.success(result.data.message);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to delete the product.");
+    }
+  };
+
+  const handleView = (productId) => {
+    navigate(`/productdetail/${productId}`);
+  };
+
+  const handleEdit = (productId) => {
+    navigate(`/productdetail/update/${productId}`);
   };
   return (
     <div>
-      <ToastContainer></ToastContainer>
-      {productdetails.map((item, i) => {
-        return (
-          <div key={i} style={{ border: "solid red 3px", margin: "10px" }}>
-            <p>
+      <ToastContainer />
+      {productdetails.map((item, i) => (
+        <div key={i} className="border border-red-500 p-4 rounded-lg shadow-md">
+          <div className="p-4">
+            <h1 className="text-xl font-bold">{item.productName}</h1>
+            <h2 className="text-lg">
               Product ID:{" "}
               {item.productId ? item.productId.productName : "No Product Name"}
-            </p>
+            </h2>
+
             <p> product Feature {item.productFeature}</p>
             <p>productDescription{item.productDescription}</p>
 
-            <button
-              onClick={() => {
-                navigate(`/productdetail/${item._id}`);
-              }}
-            >
-              View
-            </button>
-            <button
-              onClick={() => {
-                navigate(`/productdetail/update/${item._id}`);
-              }}
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => {
-                handleDelete(item._id);
-              }}
-            >
-              Delete
-            </button>
+            <button onClick={() => handleView(item._id)}>View</button>
+            <button onClick={() => handleEdit(item._id)}>Edit</button>
+            <button onClick={() => handleDelete(item._id)}>Delete</button>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };

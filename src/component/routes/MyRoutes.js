@@ -15,9 +15,11 @@ import CreateCategory from "../category/CreateCategory.js";
 import ReadAllCategory from "../category/ReadAllCategory.js";
 import ReadSpecificCategory from "../category/ReadSpecificCategory.js";
 import UpdateCategory from "../category/UpdateCategory.js";
+
 import Dashboard from "../dashboard/Dashboard.js";
 import CreateSubcategory from "../subcat/CreateSubcategory.js";
 import ReadAllSubcategory from "../subcat/ReadAllSubcategory.js";
+
 import CreateProduct from "../product/CreateProduct.js";
 import ReadAllProduct from "../product/ReadAllProduct.js";
 import ReadSpecificProduct from "../product/ReadSpecificProduct.js";
@@ -30,7 +32,9 @@ import CreateProductdetail from "../productdetail/CreateProductdetail.js";
 import ReadAllProductdetail from "../productdetail/ReadAllProductdetail.js";
 import ReadSpecificProductdetail from "../productdetail/ReadSpecificProductdetail.js";
 import UpdateProductdetail from "../productdetail/UpdateProductdetail.js";
-
+import Readalproduct from "../product/readallproductbackup.js";
+import Product from "../product/Product.js";
+import ReadAlCategory from "../category/ReadAlCategory.js";
 const MyRoutes = () => {
   return (
     <div>
@@ -52,6 +56,10 @@ const MyRoutes = () => {
         <Route
           path="/category"
           element={<ReadAllCategory></ReadAllCategory>}
+        ></Route>
+        <Route
+          path="/categoryy"
+          element={<ReadAlCategory></ReadAlCategory>}
         ></Route>
         <Route
           path="/category/:id"
@@ -86,6 +94,15 @@ const MyRoutes = () => {
           path="/product"
           element={<ReadAllProduct></ReadAllProduct>}
         ></Route>
+        <Route
+          path="/productt"
+          element={<Product></Product>}
+        ></Route>
+        <Route
+          path="/productt"
+          element={<Readalproduct></Readalproduct>}
+        ></Route>
+
         <Route
           path="/product/:id"
           element={<ReadSpecificProduct></ReadSpecificProduct>}

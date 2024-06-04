@@ -19,11 +19,11 @@ const UpdateSubcategory = () => {
         method: "get",
       });
       let data = result.data.result;
-      setSubcategoryName(data.SubcategoryName);
-
-      setSubcategoryStatus(data.SubcategoryStatus);
-      setSubcategoryImage(data.setSubcategoryImage);
-      setSubcategoryUrl(data.SubcategoryUrl);
+      setSubcategoryName(data.subcategoryName);
+      setSubcategoryParent(data.subcategoryParent);
+      setSubcategoryStatus(data.subcategoryStatus);
+      setSubcategoryImage(data.subcategoryImage);
+      setSubcategoryUrl(data.subcategoryUrl);
     } catch (error) {
       toast.error(error.message);
     }
@@ -36,7 +36,7 @@ const UpdateSubcategory = () => {
     //e.preventDefault is done to prevent default property(refresh)
     let data = {
       subcategoryName: subcategoryName,
-
+      subcategoryParent: subcategoryParent,
       subcategoryStatus: subcategoryStatus,
       subcategoryImage: subcategoryImage,
       subcategoryUrl: subcategoryUrl,
@@ -79,7 +79,18 @@ const UpdateSubcategory = () => {
             }}
           ></input>
         </div>
-
+        <div className="mb-6">
+          <label htmlFor="subcategoryParent" className="block mb-2">
+            Subcategory Parent
+          </label>
+          <input
+            id="subcategoryParent"
+            type="text"
+            value={subcategoryParent}
+            onChange={(e) => setSubcategoryParent(e.target.value)}
+            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+          />
+        </div>
         <div className="mb-10">
           <label htmlFor="subcategoryStatus">subcategory Status</label>
           <input

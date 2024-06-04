@@ -15,16 +15,29 @@ const ReadSpecificSubcategory = () => {
       setSubcategory(result.data.result);
     } catch (error) {}
   };
+  
   useEffect(() => {
     getData();
   }, []);
+  console.log("data", params);
   return (
     <div>
-      <p>name is {subcategory.subcategoryName}</p>
+      <h2 className="text-2xl font-semibold mb-2">
+        {subcategory.subcategoryName}
+      </h2>
 
-      <p>Status is {subcategory.subcategoryStatus}</p>
-      <p>Image is {subcategory.subcategoryImage}</p>
-      <p>Url is {subcategory.subcategoryUrl}</p>
+      <p className="text-gray-700 mb-1">
+        Parent: {subcategory.subcategoryParent}
+      </p>
+      <p className="text-gray-700 mb-1">Status: {item.subcategoryStatus}</p>
+      {item.subcategoryImage && (
+        <img
+          src={subcategory.subcategoryImage}
+          alt={subcategory.subcategoryName}
+          className="w-full h-48 object-cover mb-2 rounded"
+        />
+      )}
+      <p className="text-gray-700 mb-2">URL: {subcategory.subcategoryUrl}</p>
     </div>
   );
 };

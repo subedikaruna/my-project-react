@@ -33,9 +33,9 @@ const CreateImage = () => {
   });
 
   return (
-    <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
+    <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100 ">
       <form
-        className="p-7"
+        className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
         onSubmit={async (e) => {
           e.preventDefault();
           //e.preventDefault is done to prevent default property(refresh)
@@ -68,10 +68,14 @@ const CreateImage = () => {
           // console.log(data)
         }}
       >
-        <div className="mb-10">
-          <label htmlFor="imageName"> Image Name</label>
+        <h2 className="text-2xl font-bold mb-6 text-gray-700">Create Image</h2>
+        <div className="mb-6">
+          <label htmlFor="imageName" className="block text-gray-600 mb-2">
+            {" "}
+            Image Name
+          </label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             id="imageName"
             type="text"
             value={imageName}
@@ -80,11 +84,14 @@ const CreateImage = () => {
             }}
           ></input>
         </div>
-        <div>
-          <label htmlFor="productId">Product Id</label>
+        <div className="mb-6">
+          <label htmlFor="productId" className="block text-gray-600 mb-2">
+            Product Id
+          </label>
 
           <select
             id="productId"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="number"
             value={productId}
             onChange={(e) => {
@@ -101,10 +108,12 @@ const CreateImage = () => {
           </select>
         </div>
 
-        <div className="mb-10">
-          <label htmlFor="imagePath">Image Path</label>
+        <div className="mb-6">
+          <label htmlFor="imagePath" className="block text-gray-600 mb-2">
+            Image Path
+          </label>
           <input
-            className="border-solid border-2 border-black ml-8"
+            className="w-full border border-gray-300 rounded-md p-2"
             type="text"
             id="imagePath"
             value={imagePath}
@@ -116,7 +125,7 @@ const CreateImage = () => {
 
         <button
           type="submit"
-          className="border-solid border-2 border-black p-2"
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
         >
           Submit
         </button>
