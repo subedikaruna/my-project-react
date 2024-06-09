@@ -41,7 +41,7 @@ const CreateCategory = () => {
             categoryImage: categoryImage,
             categoryUrl: categoryUrl,
           };
-
+          console.log(data);
           try {
             let result = await axios({
               url: "http://localhost:8001/categorys",

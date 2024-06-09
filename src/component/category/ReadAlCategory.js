@@ -3,13 +3,18 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import CreateCategory from "../category/CreateCategory.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const ReadAlCategory = () => {
   let [categorys, setCategorys] = useState([]);
   let navigate = useNavigate();
+  const [showCreateCategory, setShowCreateCategory] = useState(false);
+
+  const handleAddCategoryClick = () => {
+    setShowCreateCategory(true);
+  };
 
   let getData = async () => {
     try {
@@ -41,45 +46,52 @@ const ReadAlCategory = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto p-4">
       <ToastContainer />
+      <button
+        className="bg-green-500 text-white py-2 px-4 rounded mb-4 hover:bg-green-600"
+        onClick={handleAddCategoryClick}
+      >
+        Add Category
+      </button>
+      {showCreateCategory && <CreateCategory />}
 
-      <div className="flex flex-col gap-3">
-        <div className="border rounded-md p-5 flex justify-between font-bold">
-          <ul>#</ul>
-          <ul>Image</ul>
-
-          <ul>Category</ul>
-          <ul>Status</ul>
-
-          <ul>Url</ul>
+      <div className="flex flex-col gap-4">
+        <div className="border rounded-md p-4 flex justify-between font-bold bg-gray-100">
+          <ul className="flex-1">#</ul>
+          <ul className="flex-1">Image</ul>
+          <ul className="flex-1">Category</ul>
+          <ul className="flex-1">Status</ul>
+          <ul className="flex-1">Url</ul>
+          <ul className="flex-1">Actions</ul>
         </div>
         {categorys.map((item, i) => (
-          <div key={i} className="border rounded-md p-5 flex justify-between">
-            <ul>
+          <div
+            key={i}
+            className="border rounded-md p-4 flex justify-between items-center"
+          >
+            <ul className="flex-1">
               <li>{i + 1}</li>
             </ul>
-            <ul>
+            <ul className="flex-1">
               <li>
                 <img
                   src={item.categoryImage}
                   alt={item.categoryName}
-                  style={{ width: "50px", height: "50px" }}
+                  className="w-12 h-12 object-cover rounded"
                 />
               </li>
             </ul>
-            <ul>
+            <ul className="flex-1">
               <li>{item.categoryName}</li>
             </ul>
-
-            <ul>
+            <ul className="flex-1">
               <li>{item.categoryStatus}</li>
             </ul>
-            <ul>
+            <ul className="flex-1">
               <li>{item.categoryUrl}</li>
             </ul>
-
-            <ul className="flex gap-2">
+            <ul className="flex-1 flex gap-2">
               <li>
                 <button
                   onClick={() => {

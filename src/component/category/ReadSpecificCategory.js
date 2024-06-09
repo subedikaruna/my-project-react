@@ -6,6 +6,8 @@ const ReadSpecificCategory = () => {
   let [category, setCategory] = useState([]);
   let params = useParams();
 
+  console.log(category?.categoryName);
+
   let getData = async () => {
     try {
       let result = await axios({

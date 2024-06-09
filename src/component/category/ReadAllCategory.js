@@ -15,6 +15,7 @@ const ReadAllCategory = () => {
         method: "get",
       });
       setCategorys(result.data.result);
+      // console.log(Data?.var);
     } catch (error) {
       console.error("Error fetching categorys", error);
     }

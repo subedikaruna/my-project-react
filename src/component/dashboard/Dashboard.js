@@ -4,56 +4,86 @@ import ReadAllProduct from "../product/ReadAllProduct";
 
 const Dashboard = () => {
   return (
-    <div className="grid">
-      <div className=" flex flex-col  ">
-        <ul>
-          <NavLink to="/category" className="inline-block ">
-            Category
-          </NavLink>
-        </ul>
-        <ul>
-          <NavLink to="/subcategory" className="inline-block ">
-            Sub Category
-          </NavLink>
-        </ul>
-        <ul>
-          <NavLink to="/productt" className="inline-block ">
-            Product
-          </NavLink>
-        </ul>
-        <ul>
-          <NavLink to="/image" className="inline-block ">
-            Images
-          </NavLink>
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4">
+      <div className="flex flex-col space-y-4 bg-white shadow-md rounded-md p-4">
+        <ul className="space-y-2">
           <li>
-            <NavLink to="/image/create" className="inline-block ">
-              Create Images
+            <NavLink
+              to="/category"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
+              Category
             </NavLink>
           </li>
           <li>
-            <NavLink to="/image" className="inline-block ">
-              Read All Images
+            <NavLink
+              to="/categoryy"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
+              Create Category
             </NavLink>
           </li>
         </ul>
-        <ul>
-          <NavLink to="/productdetail" className="inline-block ">
-            ProductDetail
-          </NavLink>
+        <ul className="space-y-2">
           <li>
-            <NavLink to="/productdetail/create" className="inline-block ">
-              Create Product Detail
+            <NavLink
+              to="/subcategory"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
+              Sub Category
             </NavLink>
           </li>
+        </ul>
+        <ul className="space-y-2">
           <li>
-            <NavLink to="/productdetail/" className="inline-block ">
+            <NavLink
+              to="/productt"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
+              Product
+            </NavLink>
+          </li>
+        </ul>
+        <ul className="space-y-2">
+          <li>
+            <NavLink
+              to="/image"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
+              Images
+            </NavLink>
+          </li>
+        
+        </ul>
+        <ul className="space-y-2">
+          <li>
+            <NavLink
+              to="/productdetail"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
+              Product Detail
+            </NavLink>
+          </li>
+         
+          <li>
+            <NavLink
+              to="/productdetail"
+              className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
+              activeClassName="bg-blue-500 text-white"
+            >
               Read Product Detail
             </NavLink>
           </li>
         </ul>
       </div>
-      <div>
-        <ReadAllProduct></ReadAllProduct>
+      <div className="col-span-1 md:col-span-3 bg-white shadow-md rounded-md p-4">
+        <ReadAllProduct />
       </div>
     </div>
   );
