@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
+import Layout from "../layout/Layout.js";
 
 const UpdateProductdetail = () => {
   let navigate = useNavigate();
@@ -86,6 +87,7 @@ const UpdateProductdetail = () => {
   };
 
   return (
+    <Layout>
     <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
       <form className="p-7" onSubmit={handleSubmit}>
         <div className="mb-10">
@@ -137,6 +139,7 @@ const UpdateProductdetail = () => {
       </form>
       <ToastContainer />
     </div>
+    </Layout>
   );
 };
 

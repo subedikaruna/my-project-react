@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CreateCategory from "../category/CreateCategory.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import Layout from "../layout/Layout.js";
 
 const ReadAlCategory = () => {
   let [categorys, setCategorys] = useState([]);
@@ -46,11 +47,13 @@ const ReadAlCategory = () => {
   };
 
   return (
+    <Layout>
     <div className="container mx-auto p-4">
       <ToastContainer />
       <button
         className="bg-green-500 text-white py-2 px-4 rounded mb-4 hover:bg-green-600"
-        onClick={handleAddCategoryClick}
+        // onClick={handleAddCategoryClick}
+        onClick={() => navigate("/category/create")}
       >
         Add Category
       </button>
@@ -124,6 +127,7 @@ const ReadAlCategory = () => {
         ))}
       </div>
     </div>
+    </Layout>
   );
 };
 

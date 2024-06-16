@@ -1,12 +1,9 @@
-import React from 'react'
-import Boots from './Boots.js'
-import Slippers from './Slippers.js'
+import React from "react";
+import Boots from "./Boots.js";
+import Slippers from "./Slippers.js";
 
 const Combo = () => {
-  return (
-    <div> <Boots></Boots>
-    <Slippers></Slippers></div>
-  )
-}
+  return <div> </div>;
+};
 
-export default Combo
+export default Combo;

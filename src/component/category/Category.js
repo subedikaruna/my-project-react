@@ -1,13 +1,13 @@
+// src/pages/Category.js
 import React from "react";
+import ReadAllCategory from "../category/ReadAllCategory.js";
+import Layout from "../layout/Layout.js";
 
-import { NavLink } from "react-router-dom";
-
-import ReadAllCategory from "./ReadAllCategory.js";
 const Category = () => {
   return (
-    <>
-      <ReadAllCategory></ReadAllCategory>
-    </>
+    <Layout>
+      <ReadAllCategory />
+    </Layout>
   );
 };
 

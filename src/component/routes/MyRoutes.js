@@ -4,13 +4,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../home/Home.js";
 import Men from "../category/Men.js";
 import Women from "../category/Women.js";
-import Boots from "../category/Boots.js";
-import Slippers from "../category/Slippers.js";
+
 import Category from "../category/Category.js";
 
-import Google from "../login/Google.js";
-
-import Fb from "../login/Fb.js";
 import CreateCategory from "../category/CreateCategory.js";
 import ReadAllCategory from "../category/ReadAllCategory.js";
 import ReadSpecificCategory from "../category/ReadSpecificCategory.js";
@@ -19,7 +15,8 @@ import UpdateCategory from "../category/UpdateCategory.js";
 import Dashboard from "../dashboard/Dashboard.js";
 import CreateSubcategory from "../subcat/CreateSubcategory.js";
 import ReadAllSubcategory from "../subcat/ReadAllSubcategory.js";
-
+import ReadSpecificSubcategory from "../subcat/ReadSpecificSubcategory.js";
+import UpdateSubcategory from "../subcat/UpdateSubcategory.js";
 import CreateProduct from "../product/CreateProduct.js";
 import ReadAllProduct from "../product/ReadAllProduct.js";
 import ReadSpecificProduct from "../product/ReadSpecificProduct.js";
@@ -39,20 +36,43 @@ import ReadAlImage from "../image/ReadAlImage .js";
 import Image from "../image/Image.js";
 import ReadAlProductdetail from "../productdetail/ReadAlProductdetail.js";
 import ReadAllProductdetail from "../productdetail/ReadAllProductdetail.js";
+
+import AdminVerify from "../admin/AdminVerify.js";
+import AdminLogin from "../admin/AdminLogin.js";
+import ClientLogin from "../client/ClientLogin.js";
+import AdminRegister from "../admin/AdminRegister.js";
+import ClientRegister from "../client/ClientRegister.js";
+
 const MyRoutes = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route
+          path="/verify-email"
+          element={<AdminVerify></AdminVerify>}
+        ></Route>
+
         <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
-        <Route path="/men" element={<Men></Men>}></Route>
-        <Route path="/women" element={<Women></Women>}></Route>
-        <Route path="/fb" element={<Fb></Fb>}></Route>
-        <Route path="/google" element={<Google></Google>}></Route>
+        <Route path="/{item.categoryName}" element={<Men></Men>}></Route>
+        <Route path="/{item.categoryName}" element={<Women></Women>}></Route>
+
+        <Route path="/admin/login" element={<AdminLogin></AdminLogin>}></Route>
+        <Route
+          path="/client/login"
+          element={<ClientLogin></ClientLogin>}
+        ></Route>
+        <Route
+          path="/admin/register"
+          element={<AdminRegister></AdminRegister>}
+        ></Route>
+        <Route
+          path="/client/register"
+          element={<ClientRegister></ClientRegister>}
+        ></Route>
+
         <Route path="/category" element={<Category></Category>}></Route>
 
-        <Route path="/menboot" element={<Boots></Boots>}></Route>
-        <Route path="/menslipper" element={<Slippers></Slippers>}></Route>
         <Route
           path="/category/create"
           element={<CreateCategory></CreateCategory>}
@@ -83,11 +103,11 @@ const MyRoutes = () => {
         ></Route>
         <Route
           path="/subcategory/:id"
-          element={<ReadSpecificCategory></ReadSpecificCategory>}
+          element={<ReadSpecificSubcategory></ReadSpecificSubcategory>}
         ></Route>
         <Route
           path="/subcategory/update/:id"
-          element={<UpdateCategory></UpdateCategory>}
+          element={<UpdateSubcategory></UpdateSubcategory>}
         ></Route>
 
         <Route
@@ -135,7 +155,7 @@ const MyRoutes = () => {
           path="/productdetail"
           element={<ReadAlProductdetail></ReadAlProductdetail>}
         ></Route>
-          <Route
+        <Route
           path="/productdetaill"
           element={<ReadAllProductdetail></ReadAllProductdetail>}
         ></Route>

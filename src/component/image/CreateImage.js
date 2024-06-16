@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Layout from "../layout/Layout.js"
 
 const CreateImage = () => {
   let [imageName, setImageName] = useState("");
@@ -33,6 +34,7 @@ const CreateImage = () => {
   });
 
   return (
+    <Layout>
     <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100 ">
       <form
         className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
@@ -132,6 +134,7 @@ const CreateImage = () => {
       </form>
       <ToastContainer />
     </div>
+    </Layout>
   );
 };
 

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Layout from "../layout/Layout.js";
 
 const ReadSpecificImage = () => {
   let [image, setImage] = useState([]);
@@ -21,6 +22,7 @@ const ReadSpecificImage = () => {
     getData();
   }, []);
   return (
+    <Layout>
     <div>
       <p>name is {image.imageName}</p>
       <p>
@@ -29,6 +31,7 @@ const ReadSpecificImage = () => {
       </p>
       <p>Image Path: {image.imagePath}</p>
     </div>
+    </Layout>
   );
 };
 

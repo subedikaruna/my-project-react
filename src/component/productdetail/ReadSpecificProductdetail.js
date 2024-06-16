@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Layout from "../layout/Layout.js";
 
 const ReadSpecificProductdetail = () => {
   let [productdetail, setProductdetail] = useState([]);
@@ -21,6 +22,7 @@ const ReadSpecificProductdetail = () => {
     getData();
   }, []);
   return (
+    <Layout>
     <div>
       <p>product Feature {productdetail.productFeature}</p>
       <p>
@@ -31,6 +33,7 @@ const ReadSpecificProductdetail = () => {
       </p>
       <p>productDescription {productdetail.productDescription}</p>
     </div>
+    </Layout>
   );
 };
 

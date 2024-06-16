@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
+import Layout from "../layout/Layout";
 const UpdateSubcategory = () => {
   let navigate = useNavigate();
   let params = useParams();
@@ -65,73 +66,75 @@ const UpdateSubcategory = () => {
     // console.log(data)
   };
   return (
-    <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
-      <form className="p-7" onSubmit={handleSubmit}>
-        <div className="mb-10">
-          <label htmlFor="subcategoryName"> Subcategory Name</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            id="subcategoryName"
-            type="text"
-            value={subcategoryName}
-            onChange={(e) => {
-              setSubcategoryName(e.target.value);
-            }}
-          ></input>
-        </div>
-        <div className="mb-6">
-          <label htmlFor="subcategoryParent" className="block mb-2">
-            Subcategory Parent
-          </label>
-          <input
-            id="subcategoryParent"
-            type="text"
-            value={subcategoryParent}
-            onChange={(e) => setSubcategoryParent(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
-          />
-        </div>
-        <div className="mb-10">
-          <label htmlFor="subcategoryStatus">subcategory Status</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="subcategoryStatus"
-            value={subcategoryStatus}
-            onChange={(e) => {
-              setSubcategoryStatus(e.target.value);
-            }}
-          ></input>
-        </div>
+    <Layout>
+      <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
+        <form className="p-7" onSubmit={handleSubmit}>
+          <div className="mb-10">
+            <label htmlFor="subcategoryName"> Subcategory Name</label>
+            <input
+              className="border-solid border-2 border-black ml-8"
+              id="subcategoryName"
+              type="text"
+              value={subcategoryName}
+              onChange={(e) => {
+                setSubcategoryName(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div className="mb-6">
+            <label htmlFor="subcategoryParent" className="block mb-2">
+              Subcategory Parent
+            </label>
+            <input
+              id="subcategoryParent"
+              type="text"
+              value={subcategoryParent}
+              onChange={(e) => setSubcategoryParent(e.target.value)}
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <div className="mb-10">
+            <label htmlFor="subcategoryStatus">subcategory Status</label>
+            <input
+              className="border-solid border-2 border-black ml-8"
+              type="text"
+              id="subcategoryStatus"
+              value={subcategoryStatus}
+              onChange={(e) => {
+                setSubcategoryStatus(e.target.value);
+              }}
+            ></input>
+          </div>
 
-        <div className="mb-10">
-          <label htmlFor="subcategoryImage">subcategory Image</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="subcategoryImage"
-            value={subcategoryImage}
-            onChange={(e) => {
-              setSubcategoryImage(e.target.value);
-            }}
-          ></input>
-        </div>
-        <div className="mb-10">
-          <label htmlFor="subcategoryUrl">subcategory Url</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="subcategoryUrl"
-            value={subcategoryUrl}
-            onChange={(e) => {
-              setSubcategoryUrl(e.target.value);
-            }}
-          ></input>
-        </div>
-        <button type="submit">Update</button>
-      </form>
-      <ToastContainer />
-    </div>
+          <div className="mb-10">
+            <label htmlFor="subcategoryImage">subcategory Image</label>
+            <input
+              className="border-solid border-2 border-black ml-8"
+              type="text"
+              id="subcategoryImage"
+              value={subcategoryImage}
+              onChange={(e) => {
+                setSubcategoryImage(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div className="mb-10">
+            <label htmlFor="subcategoryUrl">subcategory Url</label>
+            <input
+              className="border-solid border-2 border-black ml-8"
+              type="text"
+              id="subcategoryUrl"
+              value={subcategoryUrl}
+              onChange={(e) => {
+                setSubcategoryUrl(e.target.value);
+              }}
+            ></input>
+          </div>
+          <button type="submit">Update</button>
+        </form>
+        <ToastContainer />
+      </div>
+    </Layout>
   );
 };
 

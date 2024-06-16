@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Layout from "../layout/Layout";
 
 const CreateSubcategory = () => {
   let [subcategoryName, setSubcategoryName] = useState("");
@@ -29,6 +30,7 @@ const CreateSubcategory = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
+    <Layout>
     <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100">
       <form
         className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
@@ -171,6 +173,7 @@ const CreateSubcategory = () => {
 
       <ToastContainer />
     </div>
+    </Layout>
   );
 };
 

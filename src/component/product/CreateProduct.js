@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDropzone } from "react-dropzone";
+import Layout from "../layout/Layout";
 
 const CreateProduct = () => {
   let [productName, setProductName] = useState("");
@@ -75,6 +76,7 @@ const CreateProduct = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
+    <Layout>
     <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-gray-100">
       <form
         className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
@@ -258,6 +260,7 @@ const CreateProduct = () => {
       </form>
       <ToastContainer />
     </div>
+    </Layout>
   );
 };
 

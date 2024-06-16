@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, useParams } from "react-router-dom";
+import Layout from "../layout/Layout.js";
 
 const UpdateImage = () => {
   let navigate = useNavigate();
@@ -47,7 +48,6 @@ const UpdateImage = () => {
       setImageName(data.imageName);
       setProductId(data.productId);
       setImagePath(data.imagePath);
-  
     } catch (error) {
       toast.error(error.message);
     }
@@ -88,57 +88,59 @@ const UpdateImage = () => {
   };
 
   return (
-    <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
-      <form className="p-7" onSubmit={handleSubmit}>
-        <div className="mb-10">
-          <label htmlFor="imageName"> Image Name</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            id="imageName"
-            type="text"
-            value={imageName}
-            onChange={(e) => {
-              setImageName(e.target.value);
-            }}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="productId">Product Id</label>
+    <Layout>
+      <div className="flex flex-col text-center border-solid border-2 border-black hover:border-2 border-rose-600 ">
+        <form className="p-7" onSubmit={handleSubmit}>
+          <div className="mb-10">
+            <label htmlFor="imageName"> Image Name</label>
+            <input
+              className="border-solid border-2 border-black ml-8"
+              id="imageName"
+              type="text"
+              value={imageName}
+              onChange={(e) => {
+                setImageName(e.target.value);
+              }}
+            ></input>
+          </div>
+          <div>
+            <label htmlFor="productId">Product Id</label>
 
-          <select
-            id="productId"
-            type="number"
-            value={productId}
-            onChange={(e) => {
-              setProductId(e.target.value);
-            }}
-          >
-            {myProducts.map((item, i) => {
-              return (
-                <option key={i} value={item.value}>
-                  {item.label}
-                </option>
-              );
-            })}
-          </select>
-        </div>
+            <select
+              id="productId"
+              type="number"
+              value={productId}
+              onChange={(e) => {
+                setProductId(e.target.value);
+              }}
+            >
+              {myProducts.map((item, i) => {
+                return (
+                  <option key={i} value={item.value}>
+                    {item.label}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
 
-        <div className="mb-10">
-          <label htmlFor="imagePath">Image Path</label>
-          <input
-            className="border-solid border-2 border-black ml-8"
-            type="text"
-            id="imagePath"
-            value={imagePath}
-            onChange={(e) => {
-              setImagePath(e.target.value);
-            }}
-          ></input>
-        </div>
-        <button type="submit">Update</button>
-      </form>
-      <ToastContainer />
-    </div>
+          <div className="mb-10">
+            <label htmlFor="imagePath">Image Path</label>
+            <input
+              className="border-solid border-2 border-black ml-8"
+              type="text"
+              id="imagePath"
+              value={imagePath}
+              onChange={(e) => {
+                setImagePath(e.target.value);
+              }}
+            ></input>
+          </div>
+          <button type="submit">Update</button>
+        </form>
+        <ToastContainer />
+      </div>
+    </Layout>
   );
 };
 
