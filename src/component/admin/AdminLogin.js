@@ -23,7 +23,8 @@ const AdminLogin = () => {
       });
       let token = result.data.token;
       localStorage.setItem("token", token);
-      toast.success("Login successful");
+      console.log(result)
+     
       navigate("/admin");
     } catch (error) {
       toast.error(error.message);

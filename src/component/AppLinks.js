@@ -60,7 +60,7 @@ const AppLinks = () => {
         <NavLink to="/" className="inline-block text-center">
           Home
         </NavLink>
-        <NavLink to="/admin/verify-email" className="inline-block text-center">
+        <NavLink to="/verify-email" className="inline-block text-center">
          Admin Verify
         </NavLink>
         <NavLink to="/admin/my-profile" className="inline-block text-center">

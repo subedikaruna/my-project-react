@@ -6,8 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AdminForgotPassword = () => {
   const [email, setEmail] = useState("");
-  let token = localStorage.getItem("token");
   let navigate = useNavigate();
+  let token = localStorage.getItem("token");
+  
   const onSubmit = async (e) => {
     e.preventDefault();
     let data = {

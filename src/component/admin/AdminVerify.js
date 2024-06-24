@@ -10,7 +10,7 @@ const AdminVerify = () => {
   let verifyEmail = async () => {
     try {
       let result = await axios({
-        url: "http://localhost:8001/web-users/verify",
+        url: "http://localhost:8001/web-users/verify-email",
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

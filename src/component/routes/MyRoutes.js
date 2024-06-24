@@ -52,13 +52,19 @@ const MyRoutes = () => {
   return (
     <div>
       <Routes>
-      <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/verify-email" element={<AdminVerify />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/verify-email" element={<AdminVerify />} />
         <Route path="/admin/my-profile" element={<AdminMyProfile />} />
         <Route path="/admin/profile-update" element={<AdminProfileUpdate />} />
-        <Route path="/admin/update-password" element={<AdminUpdatePassword />} />
-        <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
-        <Route path="/admin/reset-password" element={<AdminResetPassword />} />
+        <Route
+          path="/admin/update-password"
+          element={<AdminUpdatePassword />}
+        />
+        <Route
+          path="/admin/forgot-password"
+          element={<AdminForgotPassword />}
+        />
+        <Route path="/reset-password" element={<AdminResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/client/login" element={<ClientLogin />} />
