@@ -1,37 +1,35 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AdminRegister = () => {
+const AdminProfileUpdate = () => {
   const [fullName, setFullName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  let navigate = useNavigate();
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("female");
+  let token = localStorage.getItem("token");
 
   const onSubmit = async (e) => {
     e.preventDefault();
     let data = {
       fullName: fullName,
-      password: password,
-      email: email,
+
       gender: gender,
       dob: dob,
     };
-    data = { ...data, role: "admin", isVerifiedEmail: "false" };
+
     try {
       let result = await axios({
-        url: "http://localhost:8001/web-users",
-        method: "post",
+        url: "http://localhost:8001/web-users/update-profile",
+        method: "PATCH",
         data: data,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-      toast.success("Email link has been sent to your email ");
-      setFullName("");
-      setPassword("");
-      setEmail("");
-      setGender("female");
-      setDob("");
+      navigate("/admin/my-profile");
     } catch (error) {
       toast.error(error.message);
     }
@@ -42,7 +40,27 @@ const AdminRegister = () => {
     { label: "Female", value: "female" },
     { label: "Other", value: "other" },
   ];
+  let getAdminProfile = async () => {
+    try {
+      let result = await axios({
+        url: "http://localhost:8001/web-users/my-profile",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      //setProfile(result.data.data);
+      let data = result.data.data;
+      setFullName(data.fullName);
 
+      setGender(data.gender);
+      setDob(data.dob);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getAdminProfile();
+  }, []);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-8 bg-white shadow-lg">
       <form
@@ -64,36 +82,7 @@ const AdminRegister = () => {
             onChange={(e) => setFullName(e.target.value)}
           />
         </div>
-        <div className="mb-6">
-          <label
-            htmlFor="password"
-            className="block text-gray-700 mb-2 font-semibold"
-          >
-            Password
-          </label>
-          <input
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 mb-2 font-semibold"
-          >
-            Email
-          </label>
-          <input
-            className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+
         <div className="mb-6">
           <label className="block text-gray-700 mb-2 font-semibold">
             Gender:
@@ -143,4 +132,4 @@ const AdminRegister = () => {
   );
 };
 
-export default AdminRegister;
+export default AdminProfileUpdate;

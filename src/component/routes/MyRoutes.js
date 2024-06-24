@@ -2,8 +2,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "../home/Home.js";
-import Men from "../category/Men.js";
-import Women from "../category/Women.js";
 
 import Category from "../category/Category.js";
 
@@ -37,39 +35,36 @@ import Image from "../image/Image.js";
 import ReadAlProductdetail from "../productdetail/ReadAlProductdetail.js";
 import ReadAllProductdetail from "../productdetail/ReadAllProductdetail.js";
 
-import AdminVerify from "../admin/AdminVerify.js";
 import AdminLogin from "../admin/AdminLogin.js";
 import ClientLogin from "../client/ClientLogin.js";
 import AdminRegister from "../admin/AdminRegister.js";
 import ClientRegister from "../client/ClientRegister.js";
+import Admin from "../admin/Admin.js";
+import AdminMyProfile from "../admin/AdminMyProfile.js";
+import AdminLogout from "../admin/AdminLogout.js";
+import AdminProfileUpdate from "../admin/AdminProfileUpdate.js";
+import AdminUpdatePassword from "../admin/AdminUpdatePassword.js";
+import AdminForgotPassword from "../admin/AdminForgotPassword.js";
+import AdminResetPassword from "../admin/AdminResetPassword.js";
+import AdminVerify from "../admin/AdminVerify.js";
 
 const MyRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route
-          path="/verify-email"
-          element={<AdminVerify></AdminVerify>}
-        ></Route>
-
-        <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
-        <Route path="/{item.categoryName}" element={<Men></Men>}></Route>
-        <Route path="/{item.categoryName}" element={<Women></Women>}></Route>
-
-        <Route path="/admin/login" element={<AdminLogin></AdminLogin>}></Route>
-        <Route
-          path="/client/login"
-          element={<ClientLogin></ClientLogin>}
-        ></Route>
-        <Route
-          path="/admin/register"
-          element={<AdminRegister></AdminRegister>}
-        ></Route>
-        <Route
-          path="/client/register"
-          element={<ClientRegister></ClientRegister>}
-        ></Route>
+      <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/verify-email" element={<AdminVerify />} />
+        <Route path="/admin/my-profile" element={<AdminMyProfile />} />
+        <Route path="/admin/profile-update" element={<AdminProfileUpdate />} />
+        <Route path="/admin/update-password" element={<AdminUpdatePassword />} />
+        <Route path="/admin/forgot-password" element={<AdminForgotPassword />} />
+        <Route path="/admin/reset-password" element={<AdminResetPassword />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/client/login" element={<ClientLogin />} />
+        <Route path="/admin/register" element={<AdminRegister />} />
+        <Route path="/admin/logout" element={<AdminLogout />} />
+        <Route path="/client/register" element={<ClientRegister />} />
 
         <Route path="/category" element={<Category></Category>}></Route>
 

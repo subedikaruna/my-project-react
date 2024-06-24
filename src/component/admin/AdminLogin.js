@@ -1,19 +1,32 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AdminLogin = () => {
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (email === "admin@example.com" && password === "admin123") {
-      toast.success("Login successful!");
-      setEmail("");
-      setPassword("");
-    } else {
-      toast.error("Invalid email or password");
+    let data = {
+      password: password,
+      email: email,
+    };
+    try {
+      let result = await axios({
+        url: "http://localhost:8001/web-users/login",
+        method: "POST",
+        data: data,
+      });
+      let token = result.data.token;
+      localStorage.setItem("token", token);
+      toast.success("Login successful");
+      navigate("/admin");
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
@@ -23,7 +36,7 @@ const AdminLogin = () => {
         <h2 className="text-2xl font-bold mb-8 text-center text-gray-800">
           Admin Login
         </h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={onSubmit}>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -62,6 +75,13 @@ const AdminLogin = () => {
           >
             Login
           </button>
+          <div
+            onClick={() => {
+              navigate("/admin/forgot-password");
+            }}
+          >
+            Forgot Password
+          </div>
         </form>
       </div>
       <ToastContainer />
