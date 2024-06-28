@@ -41,9 +41,13 @@ const ReadAllProduct = () => {
   }, []);
 
   useEffect(() => {
-    const filtered = products.filter(product => {
-      return product.productName.toLowerCase().includes(searchTerm.toLowerCase()) &&
-             product.categoryId.categoryName.toLowerCase().includes(categoryFilter.toLowerCase());
+    const filtered = products.filter((product) => {
+      return (
+        product.productName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        product.categoryId.categoryName
+          .toLowerCase()
+          .includes(categoryFilter.toLowerCase())
+      );
     });
     setFilteredProducts(filtered);
   }, [searchTerm, categoryFilter, products]);
@@ -68,7 +72,7 @@ const ReadAllProduct = () => {
       <ToastContainer />
       <button onClick={handleAddProductClick}>Add Product</button>
       {showCreateProduct && <CreateProduct />}
-      
+
       <div className="flex gap-2 my-4">
         <input
           type="text"
@@ -78,7 +82,7 @@ const ReadAllProduct = () => {
           className="border rounded-md p-2"
         />
       </div>
-      
+
       <div className="flex gap-2 my-4">
         <input
           type="text"
@@ -88,7 +92,7 @@ const ReadAllProduct = () => {
           className="border rounded-md p-2"
         />
       </div>
-      
+
       <div className="flex flex-col gap-3">
         <div className="border rounded-md p-5 flex justify-between font-bold">
           <ul>#</ul>
@@ -129,7 +133,7 @@ const ReadAllProduct = () => {
               <li>
                 <button
                   onClick={() => {
-                    navigate(`/product/${item._id}`);
+                    navigate(`/productdetails/${item._id}`);
                   }}
                 >
                   <FontAwesomeIcon icon={faEye} />

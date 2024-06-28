@@ -125,7 +125,7 @@ const MyRoutes = () => {
         ></Route>
 
         <Route
-          path="/product/:id"
+          path="/productdetails/:id"
           element={<ReadSpecificProduct></ReadSpecificProduct>}
         ></Route>
         <Route
@@ -136,7 +136,10 @@ const MyRoutes = () => {
           path="/image/create"
           element={<CreateImage></CreateImage>}
         ></Route>
-        <Route path="/admin/image" element={<ReadAlImage></ReadAlImage>}></Route>
+        <Route
+          path="/admin/image"
+          element={<ReadAlImage></ReadAlImage>}
+        ></Route>
         <Route path="admin/image" element={<Image></Image>}></Route>
         <Route path="/imagee" element={<ReadAllImage></ReadAllImage>}></Route>
         <Route
@@ -156,7 +159,7 @@ const MyRoutes = () => {
           element={<ReadAlProductdetail></ReadAlProductdetail>}
         ></Route>
         <Route
-          path="/productdetaill"
+          path="/admin/productdetail"
           element={<ReadAllProductdetail></ReadAllProductdetail>}
         ></Route>
         <Route
