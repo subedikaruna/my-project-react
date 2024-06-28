@@ -23,8 +23,8 @@ const AdminLogin = () => {
       });
       let token = result.data.token;
       localStorage.setItem("token", token);
-      console.log(result)
-     
+      console.log(result);
+
       navigate("/admin");
     } catch (error) {
       toast.error(error.message);
@@ -80,6 +80,7 @@ const AdminLogin = () => {
             onClick={() => {
               navigate("/admin/forgot-password");
             }}
+            className="w-full  bg-blue-600 text-white py-3 rounded-md mt-5 hover:bg-blue-700 transition duration-300 font-semibold text-center cursor-pointer"
           >
             Forgot Password
           </div>

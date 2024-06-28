@@ -61,7 +61,7 @@ const AdminUpdatePassword = () => {
             htmlFor="oldPassword"
             className="block text-gray-700 mb-2 font-semibold"
           >
-            old Password
+            Old Password
           </label>
           <input
             className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -76,7 +76,7 @@ const AdminUpdatePassword = () => {
             htmlFor="newPassword"
             className="block text-gray-700 mb-2 font-semibold"
           >
-            newPassword
+            New Password
           </label>
           <input
             className="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"

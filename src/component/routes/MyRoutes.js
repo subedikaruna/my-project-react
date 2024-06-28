@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Home from "../home/Home.js";
-
 import Category from "../category/Category.js";
 
 import CreateCategory from "../category/CreateCategory.js";
@@ -52,6 +50,7 @@ const MyRoutes = () => {
   return (
     <div>
       <Routes>
+        <Route path="/" element={<Product />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/verify-email" element={<AdminVerify />} />
         <Route path="/admin/my-profile" element={<AdminMyProfile />} />
@@ -116,12 +115,12 @@ const MyRoutes = () => {
           element={<CreateProduct></CreateProduct>}
         ></Route>
         <Route
-          path="/product"
+          path="/admin/product"
           element={<ReadAllProduct></ReadAllProduct>}
         ></Route>
-        <Route path="/productt" element={<Product></Product>}></Route>
+        <Route path="/client/product" element={<Product></Product>}></Route>
         <Route
-          path="/productt"
+          path="/client/product"
           element={<Readalproduct></Readalproduct>}
         ></Route>
 
@@ -137,8 +136,8 @@ const MyRoutes = () => {
           path="/image/create"
           element={<CreateImage></CreateImage>}
         ></Route>
-        <Route path="/image" element={<ReadAlImage></ReadAlImage>}></Route>
-        <Route path="/image" element={<Image></Image>}></Route>
+        <Route path="/admin/image" element={<ReadAlImage></ReadAlImage>}></Route>
+        <Route path="admin/image" element={<Image></Image>}></Route>
         <Route path="/imagee" element={<ReadAllImage></ReadAllImage>}></Route>
         <Route
           path="/image/:id"

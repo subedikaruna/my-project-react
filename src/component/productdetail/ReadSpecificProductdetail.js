@@ -23,16 +23,16 @@ const ReadSpecificProductdetail = () => {
   }, []);
   return (
     <Layout>
-    <div>
-      <p>product Feature {productdetail.productFeature}</p>
-      <p>
-        Product ID
-        {productdetail.productId
-          ? productdetail.productId.productName
-          : "No Product Name"}
-      </p>
-      <p>productDescription {productdetail.productDescription}</p>
-    </div>
+      <div>
+        <p>product Feature {productdetail.productFeature}</p>
+        <p>
+          Product ID
+          {productdetail.productId
+            ? productdetail.productId.productName
+            : "No Product Name"}
+        </p>
+        <p>productDescription {productdetail.productDescription}</p>
+      </div>
     </Layout>
   );
 };

@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
         <ul className="space-y-2">
           <li>
             <NavLink
-              to="/productt"
+              to="/client/product"
               className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
               activeClassName="bg-blue-500 text-white"
             >
@@ -60,7 +60,7 @@ const Layout = ({ children }) => {
         <ul className="space-y-2">
           <li>
             <NavLink
-              to="/image"
+              to="/admin/image"
               className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
               activeClassName="bg-blue-500 text-white"
             >
@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
         <ul className="space-y-2">
           <li>
             <NavLink
-              to="/productdetail"
+              to="/admin/productdetail"
               className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
               activeClassName="bg-blue-500 text-white"
             >
@@ -81,7 +81,7 @@ const Layout = ({ children }) => {
 
           <li>
             <NavLink
-              to="/productdetail"
+              to="/client/productdetail"
               className="block p-2 rounded-md hover:bg-blue-500 hover:text-white"
               activeClassName="bg-blue-500 text-white"
             >

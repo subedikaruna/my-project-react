@@ -58,9 +58,17 @@ const AdminMyProfile = () => {
                   onClick={() => {
                     navigate("/admin/profile-update");
                   }}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold  py-2 px-4 rounded"
                 >
-                  Update
+                  Update Profile
+                </button>
+                <button
+                  onClick={() => {
+                    navigate("/admin/update-password");
+                  }}
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold ml-5 py-2 px-4 rounded"
+                >
+                  Update Password
                 </button>
               </div>
             </div>
